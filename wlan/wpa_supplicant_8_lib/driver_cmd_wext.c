@@ -336,9 +336,8 @@ int wpa_driver_wext_driver_cmd( void *priv, char *cmd, char *buf, size_t buf_len
 
 	ret = ioctl(drv->ioctl_sock, SIOCSIWPRIV, &iwr);
 	
-    //codewalker
 	// USB Dongle Used
-	ret = 0;
+	//ret = 0;
 
 	if (ret < 0) {
 		wpa_printf(MSG_ERROR, "%s failed (%d): %s", __func__, ret, cmd);
