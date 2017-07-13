@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "../../../../../../../device/rockchip/common/bluetooth/bdroid_buildcfg.h"
+#include "../../../../../../../device/hardkernel/common/bluetooth/bdroid_buildcfg.h"
 #undef _BDROID_BUILDCFG_H
 
 #ifndef _BDROID_BUILDCFG_H
