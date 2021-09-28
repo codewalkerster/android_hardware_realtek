@@ -285,7 +285,7 @@ int wpa_driver_wext_driver_cmd( void *priv, char *cmd, char *buf, size_t buf_len
 	struct iwreq iwr;
 	int ret = 0, flags;
 
-	wpa_printf(MSG_DEBUG, "%s %s len = %d", __func__, cmd, buf_len);
+	wpa_printf(MSG_DEBUG, "%s %s len = %zu", __func__, cmd, buf_len);
 
 	if (!drv->driver_is_started && (os_strcasecmp(cmd, "START") != 0)) {
 		wpa_printf(MSG_ERROR,"WEXT: Driver not initialized yet");
@@ -353,18 +353,18 @@ int wpa_driver_wext_driver_cmd( void *priv, char *cmd, char *buf, size_t buf_len
 		    (os_strcasecmp(cmd, "GETBAND") == 0)) {
 			ret = strlen(buf);
 		} else if (os_strcasecmp(cmd, "START") == 0) {
-			drv->driver_is_started = TRUE;
+			drv->driver_is_started = true;
 			linux_set_iface_flags(drv->ioctl_sock, drv->ifname, 1);
 			/* os_sleep(0, WPA_DRIVER_WEXT_WAIT_US);
 			wpa_msg(drv->ctx, MSG_INFO, WPA_EVENT_DRIVER_STATE "STARTED"); */
 		} else if (os_strcasecmp(cmd, "STOP") == 0) {
-			drv->driver_is_started = FALSE;
+			drv->driver_is_started = false;
 			/* wpa_msg(drv->ctx, MSG_INFO, WPA_EVENT_DRIVER_STATE "STOPPED"); */
 		} else if (os_strncasecmp(cmd, "CSCAN", 5) == 0) {
 			wpa_driver_wext_set_scan_timeout(priv);
 			wpa_supplicant_notify_scanning(wpa_s, 1);
 		}
-		wpa_printf(MSG_DEBUG, "%s %s len = %d, %d", __func__, buf, ret, strlen(buf));
+		wpa_printf(MSG_DEBUG, "%s %s len = %d, %zu", __func__, buf, ret, strlen(buf));
 	}
 	return ret;
 }
